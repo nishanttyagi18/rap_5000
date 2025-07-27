@@ -12,6 +12,8 @@ authorization master ( instance )
   delete;
   field ( numbering: managed, readonly ) Id;
 
+  action( features: instance ) setAdmitted result[1] $self;
+
   mapping for znis_rap_5000 {
     Id = id;
     Firstname = firstname;

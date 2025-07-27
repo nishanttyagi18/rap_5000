@@ -31,8 +31,8 @@ annotate entity ZNIS_C_STUDENT_5000
     }
     Id;
     @UI: { 
-        lineItem: [{ position: 20 }],
-        identification: [{ position: 20 }]
+        lineItem: [{ position: 20 }, { type: #FOR_ACTION, dataAction: 'setAdmitted', label: 'Set Admitted' }],
+        identification: [{ position: 20 }, { type: #FOR_ACTION, dataAction: 'setAdmitted', label: 'Set Admitted' }]
     }
     Firstname;
     @UI: { 
