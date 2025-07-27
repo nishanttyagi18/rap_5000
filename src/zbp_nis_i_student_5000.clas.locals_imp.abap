@@ -55,7 +55,7 @@ CLASS lhc_Student IMPLEMENTATION.
 
     result = VALUE #( for ls_result in lt_result ( %tky = ls_result-%tky %param = ls_result ) ).
 
-    reported-student = VALUE #( FOR ls_stud IN reported-student ( %tky = ls_stud-%tky %msg = new_message_with_text(
+    reported-student = VALUE #( FOR ls_stud IN lt_result ( %tky = ls_stud-%tky %msg = new_message_with_text(
                                                                severity = if_abap_behv_message=>severity-success
                                                                text     = 'Record updated successfully'
                                                              ) ) ).

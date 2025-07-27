@@ -66,7 +66,14 @@ annotate entity ZNIS_C_STUDENT_5000
         lineItem: [{ position: 80 }],
         identification: [{ position: 80 }]
     }
+    @Consumption.valueHelpDefinition: [{ entity: { name: 'ZNIS_I_GENDER_5000', element: 'gender' }, 
+                                         distinctValues: true,
+                                         additionalBinding: [{ localElement: 'GenderDesc', element: 'genderdesc', usage: #FILTER_AND_RESULT }] }]
     Gender;
+    @UI: { 
+        identification: [{ position: 85 }]
+    }
+    GenderDesc;
     @UI: { 
         lineItem: [{ position: 90 }],
         identification: [{ position: 90 }]
