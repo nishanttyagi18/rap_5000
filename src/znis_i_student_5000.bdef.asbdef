@@ -7,7 +7,7 @@ lock master
 authorization master ( instance )
 //etag master <field_name>
 {
-  create ( authorization : global );
+  create ( authorization : global);
   update;
   delete;
 
@@ -16,6 +16,8 @@ authorization master ( instance )
   field ( numbering : managed, readonly ) Id;
 
   action ( features : instance ) setAdmitted result [1] $self;
+
+  validation validateAge on save { create; }
 
   mapping for znis_rap_5000
     {
