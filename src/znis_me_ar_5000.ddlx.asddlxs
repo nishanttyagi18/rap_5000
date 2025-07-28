@@ -1,0 +1,58 @@
+@Metadata.layer: #CORE
+@UI: {
+    headerInfo: {
+        typeName: 'Academic Result',
+        typeNamePlural: 'Academic Results',
+        title: {
+            type: #STANDARD,
+            label: 'Academic Results',
+            value: 'Course'
+        }
+    },
+    presentationVariant: [{ sortOrder: [{ by: 'Semester', direction: #ASC }] }]
+}
+@Search.searchable: true
+annotate entity ZNIS_C_AR_5000 with
+{
+  @UI.facet: [{
+      id: 'Academic',
+      purpose: #STANDARD,
+      type: #IDENTIFICATION_REFERENCE,
+      label: 'Academic Result',
+      position: 10
+   }]
+
+  @UI: { identification: [{ position: 10 }] }
+  Id;
+
+  @UI: { lineItem: [{ position: 10, importance: #HIGH }],
+         identification: [{ position: 20 }] }
+  @Search.defaultSearchElement: true
+  Course;
+
+  @UI: { lineItem: [{ position: 20, importance: #HIGH }],
+         identification: [{ position: 30 }] }
+  @Search.defaultSearchElement: true
+  CourseDescription;
+
+  @UI: { lineItem: [{ position: 30, importance: #HIGH }],
+          identification: [{ position: 40 }] }
+  @Search.defaultSearchElement: true
+  Semester;
+
+  @UI: { lineItem: [{ position: 40, importance: #HIGH }],
+          identification: [{ position: 50 }] }
+  @Search.defaultSearchElement: true
+  SemesterDescription;
+
+  @UI: { lineItem: [{ position: 50, importance: #HIGH }],
+          identification: [{ position: 60 }] }
+  @Search.defaultSearchElement: true
+  Semresult;
+
+  @UI: { lineItem: [{ position: 60, importance: #HIGH }],
+          identification: [{ position: 70 }] }
+  @Search.defaultSearchElement: true
+  ResultDescription;
+
+}

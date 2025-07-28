@@ -7,5 +7,15 @@ define behavior for ZNIS_C_STUDENT_5000 alias Student
   use update;
   use delete;
 
-   use action setAdmitted;
+  use action setAdmitted;
+
+  use association _academicres { create; }
+}
+
+define behavior for ZNIS_C_AR_5000 alias AcademicResult
+{
+    use update;
+    use delete;
+
+    use association _student;
 }

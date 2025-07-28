@@ -1,4 +1,5 @@
 @EndUserText.label: 'Student service definition'
 define service ZNIS_SD_STUDENT_5000 {
-  expose ZNIS_C_STUDENT_5000;
+  expose ZNIS_C_STUDENT_5000 as Student;
+  expose ZNIS_C_AR_5000      as AcademicResult;
 }

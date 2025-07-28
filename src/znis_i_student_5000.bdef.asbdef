@@ -10,19 +10,44 @@ authorization master ( instance )
   create ( authorization : global );
   update;
   delete;
-  field ( numbering: managed, readonly ) Id;
 
-  action( features: instance ) setAdmitted result [1] $self;
+  association _academicres { create; }
 
-  mapping for znis_rap_5000 {
-    Id = id;
-    Firstname = firstname;
-    Lastname = lastname;
-    Age = age;
-    Course = course;
-    Courseduration = courseduration;
-    Status = status;
-    Gender = gender;
-    Dob = dob;
-  }
+  field ( numbering : managed, readonly ) Id;
+
+  action ( features : instance ) setAdmitted result [1] $self;
+
+  mapping for znis_rap_5000
+    {
+      Id             = id;
+      Firstname      = firstname;
+      Lastname       = lastname;
+      Age            = age;
+      Course         = course;
+      Courseduration = courseduration;
+      Status         = status;
+      Gender         = gender;
+      Dob            = dob;
+    }
+}
+
+define behavior for ZNIS_I_AR_5000 alias AcademicResult
+lock dependent by _student
+authorization dependent by _student
+persistent table znis_rap_ar_5000
+{
+  update;
+  delete;
+  association _student;
+
+  field ( readonly ) Id;
+  field ( readonly : update ) Course, Semester;
+
+  mapping for znis_rap_ar_5000
+    {
+      Id        = id;
+      Course    = course;
+      Semester  = semester;
+      Semresult = semresult;
+    }
 }

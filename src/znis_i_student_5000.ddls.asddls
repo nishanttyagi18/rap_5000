@@ -9,6 +9,7 @@
 }
 define root view entity ZNIS_I_STUDENT_5000 as select from znis_rap_5000
 association [1..1] to ZNIS_I_GENDER_5000 as _gender on $projection.Gender = _gender.gender
+composition [0..*] of ZNIS_I_AR_5000 as _academicres
 {
     key id as Id,
     firstname as Firstname,
@@ -20,5 +21,6 @@ association [1..1] to ZNIS_I_GENDER_5000 as _gender on $projection.Gender = _gen
     gender as Gender,
     dob as Dob,
     _gender,
-    _gender.genderdesc as GenderDesc
+    _gender.genderdesc as GenderDesc,
+    _academicres
 }

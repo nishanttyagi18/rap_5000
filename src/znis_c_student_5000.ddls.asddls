@@ -23,5 +23,8 @@ define root view entity ZNIS_C_STUDENT_5000 as projection on ZNIS_I_STUDENT_5000
     @EndUserText.label: 'Date of Birth'
     Dob,
     @EndUserText.label: 'Gender Description'
-    GenderDesc
+    GenderDesc,
+    /* Associations */
+    _academicres: redirected to composition child ZNIS_C_AR_5000,
+    _gender
 }
