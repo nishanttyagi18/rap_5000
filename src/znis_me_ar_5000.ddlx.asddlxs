@@ -6,7 +6,7 @@
         title: {
             type: #STANDARD,
             label: 'Academic Results',
-            value: 'Course'
+            value: 'CourseDescription'
         }
     },
     presentationVariant: [{ sortOrder: [{ by: 'Semester', direction: #ASC }] }]
@@ -28,6 +28,10 @@ annotate entity ZNIS_C_AR_5000 with
   @UI: { lineItem: [{ position: 10, importance: #HIGH }],
          identification: [{ position: 20 }] }
   @Search.defaultSearchElement: true
+  @Consumption.valueHelpDefinition: [{ entity: { name: 'ZNIS_I_COURSE_5000', element: 'Value' },
+                                       distinctValues: true,
+                                       additionalBinding: [{ localElement: 'CourseDescription', element: 'Description', usage: #FILTER_AND_RESULT }] }]
+
   Course;
 
   @UI: { lineItem: [{ position: 20, importance: #HIGH }],
@@ -38,6 +42,10 @@ annotate entity ZNIS_C_AR_5000 with
   @UI: { lineItem: [{ position: 30, importance: #HIGH }],
           identification: [{ position: 40 }] }
   @Search.defaultSearchElement: true
+  @Consumption.valueHelpDefinition: [{ entity: { name: 'ZNIS_I_SEMESTER_5000', element: 'Value' },
+                                         distinctValues: true,
+                                         additionalBinding: [{ localElement: 'SemesterDescription', element: 'Description', usage: #FILTER_AND_RESULT }] }]
+
   Semester;
 
   @UI: { lineItem: [{ position: 40, importance: #HIGH }],
@@ -48,6 +56,10 @@ annotate entity ZNIS_C_AR_5000 with
   @UI: { lineItem: [{ position: 50, importance: #HIGH }],
           identification: [{ position: 60 }] }
   @Search.defaultSearchElement: true
+  @Consumption.valueHelpDefinition: [{ entity: { name: 'ZNIS_I_SEMRES_5000', element: 'Value' },
+                                       distinctValues: true,
+                                       additionalBinding: [{ localElement: 'ResultDescription', element: 'Description', usage: #FILTER_AND_RESULT }] }]
+
   Semresult;
 
   @UI: { lineItem: [{ position: 60, importance: #HIGH }],

@@ -4,7 +4,7 @@
 @Metadata.allowExtensions: true
 define view entity ZNIS_C_AR_5000 as projection on ZNIS_I_AR_5000
 {
-    @EndUserText.label: 'Academic Result'
+    @EndUserText.label: 'Student Id'
     key Id,
     @EndUserText.label: 'Course'
     key Course,

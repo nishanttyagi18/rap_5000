@@ -40,7 +40,7 @@ persistent table znis_rap_ar_5000
   delete;
   association _student;
 
-  field ( readonly ) Id;
+  field ( readonly ) Id, CourseDescription, SemesterDescription, ResultDescription;
   field ( readonly : update ) Course, Semester;
 
   mapping for znis_rap_ar_5000

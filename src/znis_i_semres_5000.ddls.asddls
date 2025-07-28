@@ -10,7 +10,7 @@
 define view entity ZNIS_I_SEMRES_5000 as select from ZNIS_I_DOMAIN_5000_TF( p_domain : 'RESULT' )
 {
     @EndUserText.label: 'Result'
-    value as Value,
+    key value as Value,
     @Semantics.text: true
     @EndUserText.label: 'Result Description'
     description as Description

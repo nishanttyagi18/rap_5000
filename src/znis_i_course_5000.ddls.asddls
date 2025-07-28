@@ -10,7 +10,7 @@
 define view entity ZNIS_I_COURSE_5000 as select from ZNIS_I_DOMAIN_5000_TF( p_domain : 'COURSE' )
 {   
     @EndUserText.label: 'Course'
-    value as Value,
+    key value as Value,
     @Semantics.text: true
     @EndUserText.label: 'Course Description'
     description as Description
