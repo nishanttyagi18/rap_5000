@@ -19,6 +19,8 @@ authorization master ( instance )
 
   validation validateAge on save { create; }
 
+  determination changeDuration on modify { field Course; }
+
   mapping for znis_rap_5000
     {
       Id             = id;

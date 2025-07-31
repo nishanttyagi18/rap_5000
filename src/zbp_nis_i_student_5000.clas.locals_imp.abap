@@ -16,6 +16,9 @@ CLASS lhc_Student DEFINITION INHERITING FROM cl_abap_behavior_handler.
     METHODS validateAge FOR VALIDATE ON SAVE
       IMPORTING keys FOR Student~validateAge.
 
+    METHODS changeDuration FOR DETERMINE ON MODIFY
+      IMPORTING keys FOR Student~changeDuration.
+
 ENDCLASS.
 
 CLASS lhc_Student IMPLEMENTATION.
@@ -84,4 +87,35 @@ CLASS lhc_Student IMPLEMENTATION.
     ENDLOOP.
   ENDMETHOD.
 
+  METHOD changeDuration.
+    READ ENTITIES OF znis_i_student_5000 IN LOCAL MODE
+    ENTITY Student
+    FIELDS ( Course )
+    WITH CORRESPONDING #( keys )
+    RESULT DATA(lt_result).
+
+    LOOP AT lt_result INTO DATA(ls_result).
+      IF ls_result-Course = 'Computer'.
+        MODIFY ENTITIES OF znis_i_student_5000 IN LOCAL MODE
+        ENTITY Student
+        UPDATE FIELDS ( CourseDuration )
+        WITH VALUE #( ( %tky = ls_result-%tky Courseduration = '5' ) ).
+
+        reported-student = VALUE #( ( %tky = ls_result-%tky %msg = new_message_with_text(
+                                                                     severity = if_abap_behv_message=>severity-success
+                                                                     text     = 'Course Duration updated'
+                                                                   ) %element-age = if_abap_behv=>mk-on ) ).
+      ELSEIF ls_result-Course = 'Electronics'.
+        MODIFY ENTITIES OF znis_i_student_5000 IN LOCAL MODE
+          ENTITY Student
+          UPDATE FIELDS ( CourseDuration )
+          WITH VALUE #( ( %tky = ls_result-%tky Courseduration = '3' ) ).
+
+          reported-student = VALUE #( ( %tky = ls_result-%tky %msg = new_message_with_text(
+                                                                     severity = if_abap_behv_message=>severity-success
+                                                                     text     = 'Course Duration updated'
+                                                                   ) %element-age = if_abap_behv=>mk-on ) ).
+      ENDIF.
+    ENDLOOP.
+  ENDMETHOD.
 ENDCLASS.
