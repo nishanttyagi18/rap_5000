@@ -24,9 +24,26 @@ ENDCLASS.
 CLASS lhc_Student IMPLEMENTATION.
 
   METHOD get_instance_authorizations.
+    READ ENTITIES OF znis_i_student_5000 IN LOCAL MODE
+    ENTITY Student
+    FIELDS ( Status ) WITH CORRESPONDING #( keys )
+    RESULT DATA(lt_result).
+
+    if requested_authorizations-%action-setAdmitted = if_abap_behv=>mk-on.
+      loop at lt_result INTO DATA(ls_result).
+         failed-student = VALUE #( ( %tky = ls_result-%tky ) ).
+         reported-student = VALUE #( ( %tky = ls_result-%tky %msg = new_message_with_text(
+                                                                    severity = if_abap_behv_message=>severity-error
+                                                                    text     = 'No authorization to udpate'
+                                                                  ) ) ).
+      endloop.
+    endif.
   ENDMETHOD.
 
   METHOD get_global_authorizations.
+    if requested_authorizations-%update = if_abap_behv=>mk-on.
+      result-%update = if_abap_behv=>auth-unauthorized.
+    endif.
   ENDMETHOD.
 
   METHOD get_instance_features.

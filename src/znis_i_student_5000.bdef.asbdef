@@ -4,7 +4,7 @@ strict ( 2 );
 define behavior for ZNIS_I_STUDENT_5000 alias Student
 persistent table znis_rap_5000
 lock master
-authorization master ( instance )
+authorization master ( global, instance )
 //etag master <field_name>
 {
   create ( authorization : global);
