@@ -15,7 +15,7 @@ authorization master ( instance )
 
   field ( numbering : managed, readonly ) Id;
 
-  action ( features : instance ) setAdmitted result [1] $self;
+  action ( features : instance )  setAdmitted result [1] $self;
 
   validation validateAge on save { create; }
 

@@ -12,6 +12,7 @@ CLASS lhc_Student DEFINITION INHERITING FROM cl_abap_behavior_handler.
 
     METHODS setAdmitted FOR MODIFY
       IMPORTING keys FOR ACTION Student~setAdmitted RESULT result.
+
     METHODS validateAge FOR VALIDATE ON SAVE
       IMPORTING keys FOR Student~validateAge.
 
@@ -78,7 +79,7 @@ CLASS lhc_Student IMPLEMENTATION.
         reported-student = VALUE #( ( %key = ls_result-%key %msg = new_message_with_text(
                                                                      severity = if_abap_behv_message=>severity-error
                                                                      text     = 'Age cannot be less than 21'
-                                                                   ) ) ).
+                                                                   ) %element-age = if_abap_behv=>mk-on ) ).
       ENDIF.
     ENDLOOP.
   ENDMETHOD.
