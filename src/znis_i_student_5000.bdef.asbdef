@@ -21,6 +21,8 @@ authorization master ( instance )
 
   determination changeDuration on modify { field Course; }
 
+  side effects { field Course affects field Courseduration; }
+
   mapping for znis_rap_5000
     {
       Id             = id;
